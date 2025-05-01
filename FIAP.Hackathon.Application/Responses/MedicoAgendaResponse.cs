@@ -5,6 +5,7 @@ namespace FIAP.Hackathon.Application.Responses
 {
     public class MedicoAgendaResponse
     {
+        public Guid MedicoAgendaId { get; set; }
         public string DataHoraInicio { get; set; }
         public string DataHoraFim { get; set; }
         public string? Paciente { get; set; }
@@ -13,6 +14,7 @@ namespace FIAP.Hackathon.Application.Responses
 
         public MedicoAgendaResponse(MedicoAgenda medicoAgenda, PacienteResponse? paciente) 
         {
+            MedicoAgendaId = medicoAgenda.MedicoAgendaId;
             DataHoraInicio = medicoAgenda.DataHoraInicio.ToString("dd/MM/yyyy HH:mm");
             DataHoraFim = medicoAgenda.DataHoraFim.ToString("dd/MM/yyyy HH:mm");
             Paciente = paciente != null ? paciente.Nome : "";

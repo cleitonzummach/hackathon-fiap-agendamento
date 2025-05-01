@@ -21,6 +21,7 @@ namespace FIAP.Hackathon.Domain.Entities
 
         public void CancelarAgendamento() 
         {
+            Situacao = AgendamentoEnum.Status.Cancelado;
             DataCancelamento = DateTime.UtcNow;
         }
     }

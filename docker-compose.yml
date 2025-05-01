@@ -1,0 +1,46 @@
+# Usage:
+# docker compose -f docker-compose.yml up --build
+# docker compose -f docker-compose.yml down
+
+services:
+  api_agendamento:
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    ports:
+      - 5003:8080
+    depends_on:
+      - db_agendamento
+    environment:
+      - POSTGRES_HOST=db_agendamento
+      - POSTGRES_PORT=5432
+      - POSTGRES_DB=hackathon_agendamento
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=123!asd
+      - UrlApiPaciente=http://api_paciente:8080/paciente
+      - UrlApiMedico=http://api_medico:8080/medico
+    networks:
+      - hackathon_rede
+
+  db_agendamento:
+    image: postgres:13
+    hostname: db_agendamento
+    environment:
+      - POSTGRES_HOST=db_agendamento
+      - POSTGRES_PORT=5432
+      - POSTGRES_DB=hackathon_agendamento
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=123!asd
+    ports:
+      - 54323:5432
+    networks:
+      - hackathon_rede
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+networks:
+  hackathon_rede:
+    external: true
+
+volumes:
+  postgres_data:

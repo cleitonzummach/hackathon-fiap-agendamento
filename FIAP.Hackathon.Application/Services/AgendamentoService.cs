@@ -85,6 +85,10 @@ namespace FIAP.Hackathon.Application.Services
                 agendamento.CancelarAgendamento();
                 _agendamentoRepository.Editar();
 
+                var medicoAgenda = _medicoAgendaRepository.RetornarPorId(agendamento.MedicoAgendaId);
+                medicoAgenda.AlterarSituacao(MedicoAgendaEnum.Status.Disponivel);
+                _medicoAgendaRepository.Editar();
+
                 return _notificacaoService.Cancelar(agendamentoId);
             }
 

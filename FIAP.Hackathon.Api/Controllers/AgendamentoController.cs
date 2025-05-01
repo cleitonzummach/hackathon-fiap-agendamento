@@ -104,7 +104,7 @@ namespace FIAP.Hackathon.Api.Controllers
 
         #region Paciente
 
-        [HttpGet("paciente/pesquisar")]
+        [HttpGet("paciente/agenda-disponivel")]
         public async Task<IActionResult> PesquisarAgendaDisponivel(Guid? especialidadeId)
         {
             var dados = await _medicoAgendaService.RetornarAgendaDisponivel(especialidadeId);

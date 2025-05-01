@@ -16,7 +16,7 @@ namespace FIAP.Hackathon.Application.Services
 
         public async Task<PacienteResponse?> ConsultarDadosPaciente(Guid pacienteId)
         {
-            var urlApiPaciente = Path.Combine(_configuration.GetSection("UrlApiPaciente").Value, pacienteId.ToString());
+            var urlApiPaciente = Path.Combine(Environment.GetEnvironmentVariable("UrlApiPaciente"), pacienteId.ToString());
             HttpClient client = new HttpClient();
             HttpResponseMessage response = await client.GetAsync(urlApiPaciente);
             response.EnsureSuccessStatusCode();
