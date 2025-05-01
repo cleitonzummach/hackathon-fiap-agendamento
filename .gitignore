@@ -1,0 +1,13 @@
+*.suo
+*.user
+.vs/
+FIAP.Hackathon.Application/bin/
+FIAP.Hackathon.Application/obj/
+FIAP.Hackathon.Api/bin/
+FIAP.Hackathon.Api/obj/
+FIAP.Hackathon.Domain/bin/
+FIAP.Hackathon.Domain/obj/
+FIAP.Hackathon.Infrastructure/bin/
+FIAP.Hackathon.Infrastructure/obj/
+FIAP.Hackathon.Tests/bin/
+FIAP.Hackathon.Tests/obj/
