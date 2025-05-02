@@ -1,4 +1,5 @@
 ﻿using FIAP.Hackathon.Domain.Entities;
+using FIAP.Hackathon.Domain.Enums;
 
 namespace FIAP.Hackathon.Tests.AgendamentoServicesTests
 {
@@ -14,6 +15,8 @@ namespace FIAP.Hackathon.Tests.AgendamentoServicesTests
             Agendamento agendamento = new Agendamento(Guid.NewGuid(), Guid.NewGuid());
             _mockAgendamentoRepository.Setup(repo => repo.RetornarPorId(_agendamentoIdExistente)).Returns(agendamento);
             _mockAgendamentoRepository.Setup(repo => repo.Editar()).Returns(true);
+            MedicoAgenda medicoAgenda = new MedicoAgenda(Guid.NewGuid(), Guid.NewGuid(), DateTime.Now.AddDays(1), DateTime.Now.AddDays(1).AddHours(1));
+            _mockMedicoAgendaRepository.Setup(repo => repo.RetornarPorId(agendamento.MedicoAgendaId)).Returns(medicoAgenda);
             _mockNotificacaoService.Setup(service => service.Cancelar(_agendamentoIdExistente)).Returns(true);
 
             // Act
